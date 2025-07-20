@@ -3,7 +3,6 @@ import { StyleSheet } from "react-native";
 
 import ParallaxScrollView from "@/components/ParallaxScrollView";
 import Calendar from "@/components/calendar/Calendar";
-import moment from "moment";
 
 export default function HomeScreen() {
   return (
@@ -22,7 +21,7 @@ export default function HomeScreen() {
       </ThemedView> */}
 
       <Calendar
-        from={moment("2025-08-01")}
+        from={new Date("2025-08-01")}
         offerDays={[
           "2025-08-10",
           "2025-08-11",

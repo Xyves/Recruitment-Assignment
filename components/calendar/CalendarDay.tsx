@@ -1,11 +1,12 @@
 import { Colors } from "@/constants/Colors";
+import { CalendarDayProps } from "@/types/Calendar";
 import { ThemeColors } from "@/types/ThemeColors";
 import { format } from "date-fns";
 import React from "react";
 import { Button, StyleSheet, useColorScheme, View } from "react-native";
 import { ThemedText } from "../ThemedText";
 
-const CalendarDay = ({ selectedDate, onOrder }) => {
+const CalendarDay: React.FC<CalendarDayProps> = ({ selectedDate, onOrder }) => {
   const scheme = useColorScheme() || "light";
   const theme: ThemeColors = Colors[scheme];
   const styles = createStyles(theme);

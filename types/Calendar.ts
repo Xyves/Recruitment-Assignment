@@ -1,5 +1,3 @@
-import { Moment } from "moment";
-
 export type MonthDay = {
   day: string;
   date: string;
@@ -15,7 +13,11 @@ export interface MonthNavigator {
   prevMonth: () => void;
 }
 export interface WeekViewProps {
-  from: Moment;
+  from: Date;
   offerDays: string[];
   orderDays: string[];
+}
+export interface CalendarDayProps {
+  selectedDate: string | null;
+  onOrder: (date: string) => void;
 }

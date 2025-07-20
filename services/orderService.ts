@@ -11,7 +11,6 @@ export const sendOrder = async (date: string) => {
     if (!response.ok) {
       throw new Error(`Błąd serwera: ${response.status}`);
     }
-
     const data = await response.json();
     return data;
   } catch (error) {

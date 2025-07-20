@@ -1,6 +1,7 @@
 import { Colors } from "@/constants/Colors";
 import { useCalendarMonth } from "@/hooks/useCalendarMonth";
 import { sendOrder } from "@/services/orderService";
+import { WeekViewProps } from "@/types/Calendar";
 import { ThemeColors } from "@/types/ThemeColors";
 import { format } from "date-fns";
 import React, { useState } from "react";
@@ -16,7 +17,11 @@ import CalendarDay from "./CalendarDay";
 import CalendarHeader from "./CalendarHeader";
 export const DayFormat = "yyyy-mm-dd";
 
-export default function MonthView() {
+export default function MonthView({
+  from,
+  offerDays,
+  orderDays,
+}: WeekViewProps) {
   // Styling based on user's system color theme (dark mode / light mode)
   const scheme = useColorScheme() || "light";
   const theme: ThemeColors = Colors[scheme];
@@ -24,9 +29,8 @@ export default function MonthView() {
   const [width, setWidth] = useState<number>(0);
   const [selectedDay, setSelectedDay] = useState<string | null>(null);
   const { weeks, monthLabel, yearLabel, nextMonth, prevMonth } =
-    useCalendarMonth(new Date(), ["2025-07-22"], ["2025-07-24"]);
+    useCalendarMonth(from, offerDays, orderDays);
   const weekDayNames = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"];
-
   const handleOrder = async (date: string) => {
     try {
       const result = await sendOrder(date);
